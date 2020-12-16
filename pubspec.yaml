@@ -1,0 +1,40 @@
+name: odoo_client
+description: A new Flutter application.
+
+version: 1.0.0+1
+
+environment:
+  sdk: ">=2.1.0 <3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  cupertino_icons: ^0.1.2
+  uuid: ^2.2.2
+  http: ^0.12.2
+  shared_preferences: ^0.5.12+2
+  flutter_easyloading: ^1.0.1
+  sprintf: ^5.0.0
+  odoo_api: ^1.0.4
+  xml2json: ^4.4.0
+  geolocator: ^6.1.6
+  geocoding: ^1.0.5
+  geocoder: ^0.2.1
+  google_maps_flutter: ^1.0.6
+  connectivity: ^2.0.2
+  giffy_dialog: ^1.8.0
+  google_fonts: ^1.1.1
+  slider_button: ^0.6.0
+  xml_rpc: ^0.3.0
+  font_awesome_flutter: 8.5.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+flutter:
+  uses-material-design: true
+  
+  
+  assets:
+    - assets/
