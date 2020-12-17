@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:odoo_client/app/pages/login.dart';
 import 'package:odoo_client/auth/settings.dart';
+import 'package:odoo_client/employee_ui/screens/chat_screen.dart';
 import 'package:odoo_client/utilis/colors.dart';
 import 'package:odoo_client/utilis/images.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -37,14 +38,14 @@ class _HomeScreenState extends State<HomeScreen> {
           width: width * 0.21,
         ),
         InkWell(
-            // onTap: () {
-            //   Navigator.push(
-            //       context, MaterialPageRoute(builder: (context) => Wellcome()));
-            // },
+            onTap: () {
+              Navigator.push(
+                  context, MaterialPageRoute(builder: (context) => ChatUI()));
+            },
             child: Icon(
-          Icons.notifications,
-          color: Colors.white,
-        )),
+              Icons.notifications,
+              color: Colors.white,
+            )),
         SizedBox(
           width: width * 0.04,
         ),

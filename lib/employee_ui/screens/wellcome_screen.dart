@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:odoo_client/auth/setting1.dart';
 import 'package:odoo_client/auth/settings.dart';
+import 'package:odoo_client/employee_ui/screens/chat_screen.dart';
 import 'package:odoo_client/employee_ui/screens/curve.dart';
 import 'package:odoo_client/employee_ui/screens/curve2.dart';
 import 'package:odoo_client/utilis/colors.dart';
@@ -88,11 +89,15 @@ class Wellcome extends StatelessWidget {
                         buttonColor: cb,
                         borderColor: cb,
                         onPressed: () {
+                          // Navigator.push(
+                          //     context,
+                          //     MaterialPageRoute(
+                          //         builder: (context) =>
+                          //             SettingsPage(title: 'Employee')));
                           Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) =>
-                                      SettingsPage(title: 'Employee')));
+                                  builder: (context) => ChatUI()));
                         }),
                     SizedBox(
                       height: height * 0.01,

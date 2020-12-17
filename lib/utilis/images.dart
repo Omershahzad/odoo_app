@@ -8,3 +8,5 @@ final map_image = "assets/map_image.png";
 final new_bg = "assets/new_bg.png";
 final new_logo = "assets/logo.png";
 final x_logo = "assets/x_logo.png";
+final pic = "assets/pic.jpeg";
+final profile = "assets/profile.png";
