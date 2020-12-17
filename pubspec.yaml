@@ -26,7 +26,9 @@ dependencies:
   google_fonts: ^1.1.1
   slider_button: ^0.6.0
   xml_rpc: ^0.3.0
-  font_awesome_flutter: 8.5.0
+  font_awesome_flutter: ^8.5.0
+  table_calendar: ^2.3.2
+  intl: ^0.16.1
 
 dev_dependencies:
   flutter_test:

@@ -5,9 +5,8 @@ import 'dart:io';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
+import 'package:odoo_client/app/data/Models/user.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-
-import 'app/data/pojo/user.dart';
 import 'app/data/services/odoo_api.dart';
 import 'app/utility/constant.dart';
 import 'app/utility/strings.dart';
@@ -33,7 +32,7 @@ abstract class Base<T extends StatefulWidget> extends State<T> {
       user = User.fromJson(map);
     }
     odoo = new Odoo(url: odooUrl);
-
+    print(odoo);
     return odoo;
   }
 

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:odoo_client/auth/setting1.dart';
 import 'package:odoo_client/auth/settings.dart';
 import 'package:odoo_client/employee_ui/screens/curve.dart';
 import 'package:odoo_client/employee_ui/screens/curve2.dart';
@@ -77,13 +76,13 @@ class Wellcome extends StatelessWidget {
                       ),
                     ),
                     SizedBox(
-                      height: height * 0.09,
+                      height: height * 0.35,
                     ),
                     SignButton(
                         screen: screen,
-                        width: screen ? width * 0.8 : height * 0.1,
+                        width: screen ? width * 0.5 : height * 0.1,
                         height: screen ? width * 0.14 : height * 0.1,
-                        txt: "LOGIN AS employee".toUpperCase(),
+                        txt: "LOGIN".toUpperCase(),
                         txtColor: Colors.white,
                         buttonColor: cb,
                         borderColor: cb,

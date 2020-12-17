@@ -6,11 +6,12 @@ import 'package:flutter/widgets.dart';
 import 'package:http/http.dart' as http;
 import 'package:odoo_api/odoo_api.dart';
 import 'package:odoo_client/Admin/DashBoard.dart';
+import 'package:odoo_client/app/data/Models/user.dart';
 import 'package:odoo_client/employee_ui/screens/Dashboard_screen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../base.dart';
-import '../data/pojo/user.dart';
+
 import '../data/services/odoo_api.dart';
 
 import 'home.dart';

@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:odoo_client/Admin/Advance/AdvanceRequest.dart';
+import 'package:odoo_client/Admin/Loan/LoanRequest.dart';
 
 import 'auth/settings.dart';
 import 'employee_ui/screens/wellcome_screen.dart';
@@ -30,7 +32,8 @@ class MyApp extends StatelessWidget {
         // closer together (more dense) than on mobile platforms.
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: Wellcome(),
+      home: SettingsPage(),
+      //SettingsPage()
     );
   }
 }

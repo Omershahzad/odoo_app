@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:odoo_client/app/data/pojo/partners.dart';
+import 'package:odoo_client/app/data/Models/partners.dart';
 import 'package:odoo_client/app/data/services/odoo_response.dart';
 import 'package:odoo_client/app/pages/partner_details.dart';
 import 'package:odoo_client/app/pages/profile.dart';
 import 'package:odoo_client/app/pages/settings.dart';
 import 'package:odoo_client/app/utility/strings.dart';
+import 'package:odoo_client/utilis/colors.dart';
 import 'package:odoo_client/base.dart';
 
 class Home extends StatefulWidget {
@@ -15,10 +16,11 @@ class Home extends StatefulWidget {
 class _HomeState extends Base<Home> {
   //Odoo _odoo;
   List<Partner> _partners = [];
+
   _getPartners() async {
     isConnected().then((isInternet) {
       if (isInternet) {
-        showLoading();
+        // showLoading();
         odoo.searchRead(
             Strings.res_employee, [], ['work_email', 'name', 'job_title']).then(
           (OdooResponse res) {
@@ -97,13 +99,25 @@ class _HomeState extends Base<Home> {
     return Scaffold(
       key: scaffoldKey,
       appBar: AppBar(
-        backgroundColor: Color(0xff875a7b),
-        title: Text("Employee"),
+        backgroundColor: Colors.white,
+        leading: GestureDetector(
+          onTap: () {
+            Navigator.pop(context);
+          },
+          child: Icon(
+            Icons.arrow_back,
+            color: Color(0xff875a7b),
+          ),
+        ),
+        title: Text(
+          "Employee",
+          style: TextStyle(color: Color(0xff875a7b)),
+        ),
         actions: <Widget>[
           IconButton(
             icon: Icon(
               Icons.settings,
-              color: Colors.white,
+              color: cg,
             ),
             onPressed: () {
               push(Settings());
@@ -112,7 +126,7 @@ class _HomeState extends Base<Home> {
           IconButton(
             icon: Icon(
               Icons.person,
-              color: Colors.white,
+              color: cg,
             ),
             onPressed: () {
               push(ProfilePage());
@@ -122,6 +136,7 @@ class _HomeState extends Base<Home> {
       ),
       body: _partners.length > 0
           ? ListView.builder(
+              clipBehavior: Clip.hardEdge,
               itemCount: _partners.length,
               physics: const AlwaysScrollableScrollPhysics(),
               itemBuilder: (context, i) => InkWell(
@@ -130,29 +145,60 @@ class _HomeState extends Base<Home> {
                 },
                 child: Column(
                   children: <Widget>[
-                    Divider(
-                      height: 10.0,
+                    Padding(
+                      padding: const EdgeInsets.only(left: 55, right: 55),
+                      child: Divider(
+                        height: 10.0,
+                      ),
                     ),
-                    ListTile(
-                      leading: CircleAvatar(
-                        foregroundColor: Theme.of(context).primaryColor,
-                        backgroundColor: Colors.grey,
-                        backgroundImage: NetworkImage(_partners[i].imageUrl),
+                    Container(
+                      width: 320,
+                      height: 100,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(20),
+                        color: Colors.indigo[100],
                       ),
-                      title: Row(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        children: <Widget>[
-                          Text(
-                            _partners[i].name,
-                            style: TextStyle(fontWeight: FontWeight.bold),
+                      child: ListTile(
+                        leading: Padding(
+                          padding: const EdgeInsets.only(top: 5),
+                          child: CircleAvatar(
+                            foregroundColor: Theme.of(context).primaryColor,
+                            backgroundColor: Colors.grey,
+                            backgroundImage:
+                                NetworkImage(_partners[i].imageUrl),
+                            radius: 30.0,
                           ),
-                        ],
-                      ),
-                      subtitle: Container(
-                        padding: const EdgeInsets.only(top: 5.0),
-                        child: Text(
-                          _partners[i].work_email,
-                          style: TextStyle(color: Colors.grey, fontSize: 15.0),
+                        ),
+                        title: Row(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: <Widget>[
+                            Text(
+                              _partners[i].name,
+                              style: TextStyle(
+                                  fontWeight: FontWeight.bold, color: cg),
+                            ),
+                          ],
+                        ),
+                        subtitle: Column(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Container(
+                              padding: const EdgeInsets.only(top: 5.0),
+                              child: Text(
+                                _partners[i].job_title,
+                                style: TextStyle(color: cg, fontSize: 15.0),
+                              ),
+                            ),
+                            Container(
+                              padding: const EdgeInsets.only(top: 5.0),
+                              child: Text(
+                                _partners[i].work_email,
+                                style: TextStyle(
+                                    color: Colors.grey, fontSize: 15.0),
+                              ),
+                            ),
+                          ],
                         ),
                       ),
                     )

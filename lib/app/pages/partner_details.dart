@@ -1,8 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:odoo_client/app/data/Models/partners.dart';
 
 import '../../base.dart';
-import '../data/pojo/partners.dart';
+
 import '../data/services/odoo_response.dart';
 import '../utility/strings.dart';
 
