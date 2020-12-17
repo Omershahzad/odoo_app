@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:odoo_client/app/pages/login.dart';
+import 'package:odoo_client/app/pages/profile.dart';
 import 'package:odoo_client/auth/settings.dart';
 import 'package:odoo_client/employee_ui/screens/chat_screen.dart';
 import 'package:odoo_client/utilis/colors.dart';
@@ -57,7 +58,6 @@ class _HomeScreenState extends State<HomeScreen> {
             },
             child: Icon(
               Icons.search,
-              color: Colors.white,
             )),
       ],
     );
@@ -111,47 +111,37 @@ class _HomeScreenState extends State<HomeScreen> {
       length: 3,
       child: Scaffold(
         backgroundColor: Colors.white,
-        appBar: PreferredSize(
-          preferredSize: Size.fromHeight(110),
-          child: AppBar(
-            backgroundColor: cb,
-            actions: [
-              Container(
-                width: width,
-                child: isSearchButtonPressed ? _searchbar() : _appbar(),
-              ),
-            ],
-            bottom: TabBar(
-              labelColor: Colors.white,
-              indicatorColor: Colors.white,
-              unselectedLabelColor: Colors.white,
-              labelStyle: TextStyle(
-                fontSize: 15,
-              ),
-              tabs: [
-                Tab(
-                  text: "Queue",
-                ),
-                Tab(
-                  text: "Ongoing",
-                ),
-                Tab(
-                  text: "Closed",
-                ),
-              ],
+        appBar: AppBar(
+          backgroundColor: Colors.white,
+          iconTheme: IconThemeData(color: cg),
+          actions: [
+            Container(
+              width: width,
+              child: isSearchButtonPressed ? _searchbar() : _appbar(),
             ),
-          ),
+          ],
         ),
         drawer: Drawer(
+          elevation: 20,
           child: ListView(
             children: [
               new UserAccountsDrawerHeader(
                 currentAccountPicture: CircleAvatar(
                   backgroundImage: AssetImage(avatar),
                 ),
-                accountName: Text('Umar Shahzad'),
-                accountEmail: Text("umarg569@gmail.com"),
-                decoration: BoxDecoration(color: cb),
+                accountName: Text('Demo'),
+                accountEmail: Text("demo@gmail.com"),
+                decoration: BoxDecoration(color: c1, shape: BoxShape.rectangle),
+              ),
+              InkWell(
+                onTap: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => ProfilePage()));
+                },
+                child: ListTile(
+                  title: Text('Profile'),
+                  leading: Icon(Icons.person),
+                ),
               ),
               InkWell(
                 onTap: () {
@@ -213,7 +203,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       await SharedPreferences.getInstance();
                   prefs.clear();
                   Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => Wellcome()));
+                      MaterialPageRoute(builder: (context) => SettingsPage()));
                 },
                 child: ListTile(
                   title: Text("Logout"),
@@ -223,36 +213,407 @@ class _HomeScreenState extends State<HomeScreen> {
             ],
           ),
         ),
-        body: TabBarView(
-          children: [
-            Container(
-              child: Center(
-                child: Text("To do task will display here"),
+        body: Padding(
+          padding: const EdgeInsets.only(left: 25, top: 25),
+          child: Column(
+            //   mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  CircleAvatar(
+                    backgroundImage: AssetImage(x_logo),
+                    radius: 25.0,
+                  ),
+                  SizedBox(
+                    width: 20,
+                  ),
+                  Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      Row(
+                        children: [
+                          Text(
+                            'Hi, ',
+                            style: TextStyle(color: cg, fontSize: 18),
+                          ),
+                          Text(
+                            "Marc Demo",
+                            style: TextStyle(
+                                color: cg,
+                                fontSize: 18,
+                                fontWeight: FontWeight.bold),
+                          ),
+                        ],
+                      ),
+                      Text(
+                        'Wellcome back',
+                        style: TextStyle(
+                            color: Colors.grey,
+                            fontSize: 15,
+                            fontWeight: FontWeight.normal),
+                      ),
+                    ],
+                  )
+                ],
               ),
-            ),
-            Container(
-              child: Center(
-                child: Text("In progress task will display here"),
+              SizedBox(
+                height: 30,
               ),
-            ),
-            Container(
-              child: Center(
-                child: Text("Completed task will display here"),
+              SingleChildScrollView(
+                child: Column(
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Row(
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: ConstrainedBox(
+                              constraints: BoxConstraints(
+                                minWidth: 70,
+                                minHeight: 70,
+                                maxWidth: 150,
+                                maxHeight: 150,
+                              ),
+                              child: GestureDetector(
+                                onTap: () {
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) =>
+                                              GeolocatorWidget()));
+                                },
+                                child: Card(
+                                  elevation: 15,
+                                  color: Colors.amber,
+                                  shadowColor: Colors.yellow,
+                                  child: Container(
+                                    width: 120,
+                                    height: 140,
+                                    child: Padding(
+                                      padding: const EdgeInsets.all(8.0),
+                                      child: Column(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
+                                        children: [
+                                          Icon(
+                                            Icons.group_outlined,
+                                            color: Colors.white,
+                                            size: 40,
+                                          ),
+                                          SizedBox(
+                                            height: 15,
+                                          ),
+                                          Text(
+                                            "attendance".toUpperCase(),
+                                            style: TextStyle(
+                                                color: Colors.white,
+                                                fontWeight: FontWeight.bold,
+                                                fontSize: 16),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: ConstrainedBox(
+                              constraints: BoxConstraints(
+                                minWidth: 70,
+                                minHeight: 70,
+                                maxWidth: 150,
+                                maxHeight: 150,
+                              ),
+                              child: GestureDetector(
+                                onTap: () {
+                                  // Navigator.push(
+                                  //     context,
+                                  //     MaterialPageRoute(
+                                  //         builder: (context) => EmployeeScreen()));
+                                },
+                                child: Card(
+                                  elevation: 15,
+                                  color: Colors.orange,
+                                  shadowColor: Colors.amber,
+                                  child: Container(
+                                    width: 120,
+                                    height: 140,
+                                    child: Padding(
+                                      padding: const EdgeInsets.all(8.0),
+                                      child: Column(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
+                                        children: [
+                                          Icon(
+                                            Icons.all_inclusive_outlined,
+                                            color: Colors.white,
+                                            size: 30,
+                                          ),
+                                          SizedBox(
+                                            height: 15,
+                                          ),
+                                          Text(
+                                            "Advance".toUpperCase(),
+                                            style: TextStyle(
+                                                color: Colors.white,
+                                                fontWeight: FontWeight.bold,
+                                                fontSize: 17),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ),
+                          )
+                        ],
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Row(
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: ConstrainedBox(
+                              constraints: BoxConstraints(
+                                minWidth: 70,
+                                minHeight: 70,
+                                maxWidth: 150,
+                                maxHeight: 150,
+                              ),
+                              child: GestureDetector(
+                                onTap: () {
+                                  // Navigator.push(
+                                  //     context,
+                                  //     MaterialPageRoute(
+                                  //         builder: (context) => Timeoff()));
+                                },
+                                child: Card(
+                                  elevation: 15,
+                                  color: Colors.purple,
+                                  shadowColor: Colors.purple[700],
+                                  child: Container(
+                                    width: 120,
+                                    height: 140,
+                                    child: Padding(
+                                      padding: const EdgeInsets.all(8.0),
+                                      child: Column(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
+                                        children: [
+                                          Icon(
+                                            Icons.access_time_sharp,
+                                            color: Colors.white,
+                                            size: 30,
+                                          ),
+                                          SizedBox(
+                                            height: 15,
+                                          ),
+                                          Text(
+                                            "Time Off".toUpperCase(),
+                                            style: TextStyle(
+                                                color: Colors.white,
+                                                fontWeight: FontWeight.bold,
+                                                fontSize: 17),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: ConstrainedBox(
+                              constraints: BoxConstraints(
+                                minWidth: 70,
+                                minHeight: 70,
+                                maxWidth: 150,
+                                maxHeight: 150,
+                              ),
+                              child: Card(
+                                elevation: 15,
+                                color: Colors.blue[900],
+                                shadowColor: Colors.blueGrey,
+                                child: GestureDetector(
+                                  onTap: () {
+                                    // Navigator.push(
+                                    //     context,
+                                    //     MaterialPageRoute(
+                                    //         builder: (context) => PayRoll()));
+                                  },
+                                  child: Container(
+                                    width: 120,
+                                    height: 140,
+                                    child: Padding(
+                                      padding: const EdgeInsets.all(8.0),
+                                      child: Column(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
+                                        children: [
+                                          Icon(
+                                            Icons.payment,
+                                            color: Colors.white,
+                                            size: 30,
+                                          ),
+                                          SizedBox(
+                                            height: 15,
+                                          ),
+                                          Text(
+                                            "Pay Slip".toUpperCase(),
+                                            style: TextStyle(
+                                                color: Colors.white,
+                                                fontWeight: FontWeight.bold,
+                                                fontSize: 17),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ),
+                          )
+                        ],
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Row(
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: ConstrainedBox(
+                              constraints: BoxConstraints(
+                                minWidth: 70,
+                                minHeight: 70,
+                                maxWidth: 150,
+                                maxHeight: 150,
+                              ),
+                              child: GestureDetector(
+                                onTap: () {
+                                  // Navigator.push(
+                                  //     context,
+                                  //     MaterialPageRoute(
+                                  //         builder: (context) => Timeoff()));
+                                },
+                                child: Card(
+                                  elevation: 15,
+                                  color: Colors.blueGrey[900],
+                                  shadowColor: Colors.grey[700],
+                                  child: Container(
+                                    width: 120,
+                                    height: 140,
+                                    child: Padding(
+                                      padding: const EdgeInsets.all(8.0),
+                                      child: Column(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
+                                        children: [
+                                          Icon(
+                                            Icons.money,
+                                            color: Colors.white,
+                                            size: 30,
+                                          ),
+                                          SizedBox(
+                                            height: 15,
+                                          ),
+                                          Text(
+                                            "loan".toUpperCase(),
+                                            style: TextStyle(
+                                                color: Colors.white,
+                                                fontWeight: FontWeight.bold,
+                                                fontSize: 17),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: ConstrainedBox(
+                              constraints: BoxConstraints(
+                                minWidth: 70,
+                                minHeight: 70,
+                                maxWidth: 150,
+                                maxHeight: 150,
+                              ),
+                              child: Card(
+                                elevation: 15,
+                                color: Colors.green[900],
+                                shadowColor: Colors.blueGrey,
+                                child: GestureDetector(
+                                  onTap: () {
+                                    // Navigator.push(
+                                    //     context,
+                                    //     MaterialPageRoute(
+                                    //         builder: (context) => PayRoll()));
+                                  },
+                                  child: Container(
+                                    width: 120,
+                                    height: 140,
+                                    child: Padding(
+                                      padding: const EdgeInsets.all(8.0),
+                                      child: Column(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
+                                        children: [
+                                          Icon(
+                                            Icons.message,
+                                            color: Colors.white,
+                                            size: 30,
+                                          ),
+                                          SizedBox(
+                                            height: 15,
+                                          ),
+                                          Text(
+                                            "Messages".toUpperCase(),
+                                            style: TextStyle(
+                                                color: Colors.white,
+                                                fontWeight: FontWeight.bold,
+                                                fontSize: 17),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ),
+                          )
+                        ],
+                      ),
+                    )
+                  ],
+                ),
               ),
-            ),
-          ],
-        ),
-        floatingActionButton: Padding(
-          padding: const EdgeInsets.all(6.0),
-          child: FloatingActionButton(
-            backgroundColor: cb,
-            onPressed: () {
-              Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => TaskCreation()));
-            },
-            child: Icon(Icons.add),
+            ],
           ),
         ),
+
+        // floatingActionButton: Padding(
+        //   padding: const EdgeInsets.all(6.0),
+        //   child: FloatingActionButton(
+        //     backgroundColor: cb,
+        //     onPressed: () {
+        //       Navigator.push(context,
+        //           MaterialPageRoute(builder: (context) => TaskCreation()));
+        //     },
+        //     child: Icon(Icons.add),
+        //   ),
       ),
     );
   }

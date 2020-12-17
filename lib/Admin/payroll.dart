@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:odoo_client/app/data/pojo/partners.dart';
-import 'package:odoo_client/app/data/pojo/payroll_Model.dart';
+import 'package:odoo_client/app/data/Models/payroll_Model.dart';
 import 'package:odoo_client/app/data/services/odoo_response.dart';
 import 'package:odoo_client/app/pages/partner_details.dart';
 import 'package:odoo_client/app/pages/profile.dart';
 import 'package:odoo_client/app/pages/settings.dart';
 import 'package:odoo_client/app/utility/strings.dart';
 import 'package:odoo_client/base.dart';
+import 'package:odoo_client/utilis/colors.dart';
 
 class PayRoll extends StatefulWidget {
   @override
@@ -20,8 +20,15 @@ class _PayRollState extends Base<PayRoll> {
     isConnected().then((isInternet) {
       if (isInternet) {
         showLoading();
-        odoo.searchRead("hr.payslip", [],
-            ['employee_id', 'date_from', 'date_to', 'company_id']).then(
+        odoo.searchRead("hr.payslip", [], [
+          'employee_id',
+          'date_from',
+          'date_to',
+          'company_id',
+          'basic_wage',
+          'net_wage',
+          'state'
+        ]).then(
           (OdooResponse res) {
             print(res);
             if (!res.hasError()) {
@@ -32,15 +39,18 @@ class _PayRollState extends Base<PayRoll> {
                 for (var i in res.getRecords()) {
                   _pay.add(
                     new Pay(
-                      id: i["id"],
-                      // type: i["worked_entry_type_id"] is! bool
-                      //     ? i["worked_entry_type_id"]
-                      //     : "N/A",
-                      description: i["employee_id"],
-                      nodays: i["date_from"] is! bool ? i["date_from"] : "N/A",
-                      nohours: i["date_to"],
-                      amount: i["company_id"],
-                    ),
+                        id: i["id"],
+                        // type: i["worked_entry_type_id"] is! bool
+                        //     ? i["worked_entry_type_id"]
+                        //     : "N/A",
+                        description: i["employee_id"],
+                        nodays:
+                            i["date_from"] is! bool ? i["date_from"] : "N/A",
+                        nohours: i["date_to"],
+                        company: i["company_id"],
+                        basic_wage: i["basic_wage"],
+                        net_wage: i["net_wage"],
+                        state: i["state"]),
                   );
                 }
               });
@@ -58,7 +68,8 @@ class _PayRollState extends Base<PayRoll> {
   @override
   void initState() {
     super.initState();
-    _getPay();
+    // _getPay();
+    //_pay.clear();
     getOdooInstance().then((odoo) {
       _getPay();
     });
@@ -96,13 +107,25 @@ class _PayRollState extends Base<PayRoll> {
     return Scaffold(
       key: scaffoldKey,
       appBar: AppBar(
-        backgroundColor: Color(0xff875a7b),
-        title: Text("Payslip"),
+        backgroundColor: Colors.white,
+        leading: GestureDetector(
+          onTap: () {
+            Navigator.pop(context);
+          },
+          child: Icon(
+            Icons.arrow_back,
+            color: Color(0xff875a7b),
+          ),
+        ),
+        title: Text(
+          "Payslip",
+          style: TextStyle(color: cg),
+        ),
         actions: <Widget>[
           IconButton(
             icon: Icon(
               Icons.settings,
-              color: Colors.white,
+              color: cg,
             ),
             onPressed: () {
               push(Settings());
@@ -111,7 +134,7 @@ class _PayRollState extends Base<PayRoll> {
           IconButton(
             icon: Icon(
               Icons.person,
-              color: Colors.white,
+              color: cg,
             ),
             onPressed: () {
               push(ProfilePage());
@@ -132,33 +155,166 @@ class _PayRollState extends Base<PayRoll> {
                     Divider(
                       height: 10.0,
                     ),
-                    ListTile(
-                      title: Row(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        children: <Widget>[
-                          // Text(
-                          //   _pay[i].type,
-                          //   style: TextStyle(fontWeight: FontWeight.bold),
+                    Container(
+                      width: 320,
+                      padding: EdgeInsets.all(10),
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(10),
+                          color: Colors.purple[100]),
+                      child: ListTile(
+                        title: Column(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: <Widget>[
+                            // Text(
+                            //   _pay[i].type,
+                            //   style: TextStyle(fontWeight: FontWeight.bold),
+                            // ),
+
+                            Row(
+                              children: [
+                                Expanded(
+                                  child: Text(
+                                    "Employee : ",
+                                    style: TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                        color: Colors.white),
+                                  ),
+                                ),
+                                Expanded(
+                                  child: Text(
+                                    _pay[i].description[1],
+                                    style: TextStyle(
+                                        fontWeight: FontWeight.bold, color: cg),
+                                  ),
+                                ),
+                              ],
+                            ),
+
+                            Row(
+                              children: [
+                                Expanded(
+                                  child: Text(
+                                    "From : ",
+                                    style: TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                        color: Colors.white),
+                                  ),
+                                ),
+                                Expanded(
+                                  child: Text(
+                                    _pay[i].nodays.toString(),
+                                    style: TextStyle(
+                                        fontWeight: FontWeight.bold, color: cg),
+                                  ),
+                                ),
+                              ],
+                            ),
+
+                            Row(
+                              children: [
+                                Expanded(
+                                  child: Text(
+                                    "To : ",
+                                    style: TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                        color: Colors.white),
+                                  ),
+                                ),
+                                Expanded(
+                                  child: Text(
+                                    _pay[i].nohours.toString(),
+                                    style: TextStyle(
+                                        fontWeight: FontWeight.bold, color: cg),
+                                  ),
+                                ),
+                              ],
+                            ),
+
+                            Row(
+                              children: [
+                                Expanded(
+                                  child: Text(
+                                    "Company : ",
+                                    style: TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                        color: Colors.white),
+                                  ),
+                                ),
+                                Expanded(
+                                  child: Text(
+                                    _pay[i].company[1],
+                                    style: TextStyle(
+                                        fontWeight: FontWeight.bold, color: cg),
+                                  ),
+                                ),
+                              ],
+                            ),
+                            Row(
+                              children: [
+                                Expanded(
+                                  child: Text(
+                                    "Basic : ",
+                                    style: TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                        color: Colors.white),
+                                  ),
+                                ),
+                                Expanded(
+                                  child: Text(
+                                    _pay[i].basic_wage.toString() + " €",
+                                    style: TextStyle(
+                                        fontWeight: FontWeight.bold, color: cg),
+                                  ),
+                                ),
+                              ],
+                            ),
+
+                            Row(
+                              children: [
+                                Expanded(
+                                  child: Text(
+                                    "Net : ",
+                                    style: TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                        color: Colors.white),
+                                  ),
+                                ),
+                                Expanded(
+                                  child: Text(
+                                    _pay[i].net_wage.toString() + " €",
+                                    style: TextStyle(
+                                        fontWeight: FontWeight.bold, color: cg),
+                                  ),
+                                ),
+                              ],
+                            ),
+                            Row(
+                              children: [
+                                Expanded(
+                                  child: Text(
+                                    "State : ",
+                                    style: TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                        color: Colors.white),
+                                  ),
+                                ),
+                                Expanded(
+                                  child: Text(
+                                    _pay[i].state,
+                                    style: TextStyle(
+                                        fontWeight: FontWeight.bold, color: cg),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ],
+                        ),
+                        subtitle: Container(
+                          padding: const EdgeInsets.only(top: 5.0),
+                          // child: Text(
+                          //   _pay[i].description[0],
+                          //   style: TextStyle(color: Colors.grey, fontSize: 15.0),
                           // ),
-                          Text(
-                            _pay[i].nodays.toString(),
-                            style: TextStyle(fontWeight: FontWeight.bold),
-                          ),
-                          Text(
-                            _pay[i].nohours.toString(),
-                            style: TextStyle(fontWeight: FontWeight.bold),
-                          ),
-                          Text(
-                            _pay[i].amount,
-                            style: TextStyle(fontWeight: FontWeight.bold),
-                          ),
-                        ],
-                      ),
-                      subtitle: Container(
-                        padding: const EdgeInsets.only(top: 5.0),
-                        child: Text(
-                          _pay[i].description,
-                          style: TextStyle(color: Colors.grey, fontSize: 15.0),
                         ),
                       ),
                     )
