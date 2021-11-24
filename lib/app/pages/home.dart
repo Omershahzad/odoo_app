@@ -99,25 +99,25 @@ class _HomeState extends Base<Home> {
     return Scaffold(
       key: scaffoldKey,
       appBar: AppBar(
-        backgroundColor: Colors.white,
+        backgroundColor: c3,
         leading: GestureDetector(
           onTap: () {
             Navigator.pop(context);
           },
           child: Icon(
             Icons.arrow_back,
-            color: Color(0xff875a7b),
+            color: Colors.white,
           ),
         ),
         title: Text(
           "Employee",
-          style: TextStyle(color: Color(0xff875a7b)),
+          style: TextStyle(color: Colors.white),
         ),
         actions: <Widget>[
           IconButton(
             icon: Icon(
               Icons.settings,
-              color: cg,
+              color: Colors.white,
             ),
             onPressed: () {
               push(Settings());
@@ -126,7 +126,7 @@ class _HomeState extends Base<Home> {
           IconButton(
             icon: Icon(
               Icons.person,
-              color: cg,
+              color: Colors.white,
             ),
             onPressed: () {
               push(ProfilePage());

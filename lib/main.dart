@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:odoo_client/Admin/Advance/AdvanceRequest.dart';
-import 'package:odoo_client/Admin/Loan/LoanRequest.dart';
 
 import 'auth/settings.dart';
-import 'employee_ui/screens/wellcome_screen.dart';
 
 void main() {
   runApp(MyApp());

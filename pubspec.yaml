@@ -21,19 +21,15 @@ dependencies:
   geocoding: ^1.0.5
   geocoder: ^0.2.1
   google_maps_flutter: ^1.0.6
-  connectivity: ^2.0.2
   giffy_dialog: ^1.8.0
   google_fonts: ^1.1.1
   slider_button: ^0.6.0
   xml_rpc: ^0.3.0
-<<<<<<< HEAD
-  font_awesome_flutter: 8.5.0
   dash_chat: ^1.1.15
-=======
   font_awesome_flutter: ^8.5.0
   table_calendar: ^2.3.2
-  intl: ^0.16.1
->>>>>>> 94adc5d8ddd5749301894dcbdbd8c2399bc59247
+  emoji_picker: ^0.1.0
+
 
 dev_dependencies:
   flutter_test:

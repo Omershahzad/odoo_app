@@ -1,14 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:odoo_client/auth/settings.dart';
+import 'package:odoo_client/app/pages/settings.dart';
 import 'package:odoo_client/employee_ui/screens/chat_screen.dart';
-import 'package:odoo_client/employee_ui/screens/curve.dart';
-import 'package:odoo_client/employee_ui/screens/curve2.dart';
 import 'package:odoo_client/utilis/colors.dart';
 import 'package:odoo_client/utilis/images.dart';
 import 'package:odoo_client/widget/button.dart';
-
-import 'Login.dart';
 
 class Wellcome extends StatelessWidget {
   @override
@@ -77,7 +73,7 @@ class Wellcome extends StatelessWidget {
                       ),
                     ),
                     SizedBox(
-                      height: height * 0.35,
+                      height: height * 0.20,
                     ),
                     SignButton(
                         screen: screen,
@@ -96,7 +92,7 @@ class Wellcome extends StatelessWidget {
                           Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => ChatUI()));
+                                  builder: (context) => Settings()));
                         }),
                     SizedBox(
                       height: height * 0.01,

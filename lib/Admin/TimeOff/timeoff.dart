@@ -6,8 +6,6 @@ import 'package:odoo_client/Admin/TimeOff/ManagersAllocations.dart';
 import 'package:odoo_client/Admin/TimeOff/ManagersTimeoff.dart';
 import 'package:odoo_client/Admin/TimeOff/MyTimeOffAllocation.dart';
 import 'package:odoo_client/Admin/TimeOff/MyTimeOffRequest.dart';
-import 'package:odoo_client/Admin/payroll.dart';
-import 'package:odoo_client/app/pages/home.dart';
 import 'package:odoo_client/utilis/colors.dart';
 
 class Timeoff extends StatefulWidget {
@@ -32,11 +30,13 @@ class _TimeoffState extends State<Timeoff> {
     return Row(
       children: [
         SizedBox(
-          width: width * 0.38,
+          width: width * 0.34,
         ),
         Text("Time Off",
             style: GoogleFonts.raleway(
-                fontSize: 18, fontWeight: FontWeight.bold, color: cg)),
+                fontSize: 18,
+                fontWeight: FontWeight.bold,
+                color: Colors.white)),
         SizedBox(
           width: width * 0.22,
         ),
@@ -47,7 +47,7 @@ class _TimeoffState extends State<Timeoff> {
             },
             child: Icon(
               Icons.notifications,
-              color: cg,
+              color: Colors.white,
             )),
         SizedBox(
           width: width * 0.04,
@@ -60,7 +60,7 @@ class _TimeoffState extends State<Timeoff> {
             },
             child: Icon(
               Icons.search,
-              color: cg,
+              color: Colors.white,
             )),
       ],
     );
@@ -69,7 +69,7 @@ class _TimeoffState extends State<Timeoff> {
   Widget _searchbar() {
     double width = MediaQuery.of(context).size.width;
     return Container(
-      color: cg,
+      color: c3,
       child: Row(
         children: [
           SizedBox(
@@ -113,14 +113,15 @@ class _TimeoffState extends State<Timeoff> {
     double height = MediaQuery.of(context).size.height;
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.white,
+        iconTheme: IconThemeData(color: Colors.white),
+        backgroundColor: c3,
         leading: GestureDetector(
           onTap: () {
             Navigator.pop(context);
           },
           child: Icon(
             Icons.arrow_back,
-            color: Color(0xff875a7b),
+            color: Colors.white,
           ),
         ),
         actions: [
@@ -139,8 +140,8 @@ class _TimeoffState extends State<Timeoff> {
               padding: const EdgeInsets.all(8.0),
               child: ConstrainedBox(
                 constraints: BoxConstraints(
-                  minWidth: 70,
-                  minHeight: 70,
+                  minWidth: 50,
+                  minHeight: 50,
                   maxWidth: width,
                   maxHeight: height,
                 ),
@@ -151,15 +152,15 @@ class _TimeoffState extends State<Timeoff> {
                   },
                   child: Card(
                     elevation: 15,
-                    color: Colors.indigo[900],
-                    shadowColor: Colors.indigo,
+                    color: c3,
+                    shadowColor: c3,
                     child: Container(
                       height: height * 0.1,
                       width: width * 0.8,
                       child: Padding(
-                        padding: const EdgeInsets.all(15.0),
+                        padding: const EdgeInsets.all(5.0),
                         child: DropdownButton(
-                          dropdownColor: Colors.indigo[900],
+                          dropdownColor: c3,
                           icon: Padding(
                             padding: const EdgeInsets.only(left: 40),
                             child: Icon(
@@ -236,7 +237,7 @@ class _TimeoffState extends State<Timeoff> {
                       height: height * 0.1,
                       width: width * 0.8,
                       child: Padding(
-                        padding: const EdgeInsets.all(15.0),
+                        padding: const EdgeInsets.all(5.0),
                         child: DropdownButton(
                           dropdownColor: Colors.indigo[300],
                           icon: Padding(

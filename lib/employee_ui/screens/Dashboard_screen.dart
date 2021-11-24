@@ -1,17 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:odoo_client/app/pages/login.dart';
 import 'package:odoo_client/app/pages/profile.dart';
 import 'package:odoo_client/auth/settings.dart';
 import 'package:odoo_client/employee_ui/screens/chat_screen.dart';
 import 'package:odoo_client/utilis/colors.dart';
 import 'package:odoo_client/utilis/images.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-
 import 'Attendance.dart';
-
-import 'TaskCreation_screen.dart';
+import 'chat_test.dart';
 import 'leaves.dart';
-import 'wellcome_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   @override
@@ -41,7 +37,7 @@ class _HomeScreenState extends State<HomeScreen> {
         InkWell(
             onTap: () {
               Navigator.push(
-                  context, MaterialPageRoute(builder: (context) => ChatUI()));
+                  context, MaterialPageRoute(builder: (context) => ChatScreen()));
             },
             child: Icon(
               Icons.notifications,
@@ -66,7 +62,7 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget _searchbar() {
     double width = MediaQuery.of(context).size.width;
     return Container(
-      color: cb,
+      color: c5,
       child: Row(
         children: [
           SizedBox(
@@ -112,8 +108,8 @@ class _HomeScreenState extends State<HomeScreen> {
       child: Scaffold(
         backgroundColor: Colors.white,
         appBar: AppBar(
-          backgroundColor: Colors.white,
-          iconTheme: IconThemeData(color: cg),
+          backgroundColor: c5,
+          iconTheme: IconThemeData(color: Colors.white),
           actions: [
             Container(
               width: width,
@@ -131,7 +127,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
                 accountName: Text('Demo'),
                 accountEmail: Text("demo@gmail.com"),
-                decoration: BoxDecoration(color: c1, shape: BoxShape.rectangle),
+                decoration: BoxDecoration(color: c5, shape: BoxShape.rectangle),
               ),
               InkWell(
                 onTap: () {
@@ -214,68 +210,63 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
         ),
         body: Padding(
-          padding: const EdgeInsets.only(left: 25, top: 25),
-          child: Column(
-            //   mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: [
-                  CircleAvatar(
-                    backgroundImage: AssetImage(x_logo),
-                    radius: 25.0,
-                  ),
-                  SizedBox(
-                    width: 20,
-                  ),
-                  Column(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
-                      Row(
-                        children: [
-                          Text(
-                            'Hi, ',
-                            style: TextStyle(color: cg, fontSize: 18),
-                          ),
-                          Text(
-                            "Marc Demo",
-                            style: TextStyle(
-                                color: cg,
-                                fontSize: 18,
-                                fontWeight: FontWeight.bold),
-                          ),
-                        ],
-                      ),
-                      Text(
-                        'Wellcome back',
-                        style: TextStyle(
-                            color: Colors.grey,
-                            fontSize: 15,
-                            fontWeight: FontWeight.normal),
-                      ),
-                    ],
-                  )
-                ],
-              ),
-              SizedBox(
-                height: 30,
-              ),
-              SingleChildScrollView(
-                child: Column(
+          padding: const EdgeInsets.only(left: 25, top: 10),
+          child: SingleChildScrollView(
+            child: Column(
+              //   mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
                   children: [
-                    Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Row(
-                        children: [
-                          Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: ConstrainedBox(
-                              constraints: BoxConstraints(
-                                minWidth: 70,
-                                minHeight: 70,
-                                maxWidth: 150,
-                                maxHeight: 150,
-                              ),
+                    CircleAvatar(
+                      backgroundImage: AssetImage(avatar),
+                      radius: 25.0,
+                    ),
+                    SizedBox(
+                      width: 20,
+                    ),
+                    Column(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        Row(
+                          children: [
+                            Text(
+                              'Hi, ',
+                              style:
+                                  TextStyle(color: Colors.black, fontSize: 18),
+                            ),
+                            Text(
+                              "Marc Demo",
+                              style: TextStyle(
+                                  color: Colors.black,
+                                  fontSize: 18,
+                                  fontWeight: FontWeight.bold),
+                            ),
+                          ],
+                        ),
+                        Text(
+                          'Wellcome back',
+                          style: TextStyle(
+                              color: Colors.grey,
+                              fontSize: 15,
+                              fontWeight: FontWeight.normal),
+                        ),
+                      ],
+                    )
+                  ],
+                ),
+                SizedBox(
+                  height: 20,
+                ),
+                SingleChildScrollView(
+                  child: Column(
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Row(
+                          children: [
+                            Padding(
+                              padding: const EdgeInsets.all(8.0),
                               child: GestureDetector(
                                 onTap: () {
                                   Navigator.push(
@@ -286,11 +277,10 @@ class _HomeScreenState extends State<HomeScreen> {
                                 },
                                 child: Card(
                                   elevation: 15,
-                                  color: Colors.amber,
-                                  shadowColor: Colors.yellow,
+                                  color: c3,
                                   child: Container(
-                                    width: 120,
-                                    height: 140,
+                                    width: 130,
+                                    height: 130,
                                     child: Padding(
                                       padding: const EdgeInsets.all(8.0),
                                       child: Column(
@@ -319,16 +309,8 @@ class _HomeScreenState extends State<HomeScreen> {
                                 ),
                               ),
                             ),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: ConstrainedBox(
-                              constraints: BoxConstraints(
-                                minWidth: 70,
-                                minHeight: 70,
-                                maxWidth: 150,
-                                maxHeight: 150,
-                              ),
+                            Padding(
+                              padding: const EdgeInsets.all(8.0),
                               child: GestureDetector(
                                 onTap: () {
                                   // Navigator.push(
@@ -338,11 +320,10 @@ class _HomeScreenState extends State<HomeScreen> {
                                 },
                                 child: Card(
                                   elevation: 15,
-                                  color: Colors.orange,
-                                  shadowColor: Colors.amber,
+                                  color: c3,
                                   child: Container(
-                                    width: 120,
-                                    height: 140,
+                                    width: 130,
+                                    height: 130,
                                     child: Padding(
                                       padding: const EdgeInsets.all(8.0),
                                       child: Column(
@@ -370,24 +351,16 @@ class _HomeScreenState extends State<HomeScreen> {
                                   ),
                                 ),
                               ),
-                            ),
-                          )
-                        ],
+                            )
+                          ],
+                        ),
                       ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Row(
-                        children: [
-                          Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: ConstrainedBox(
-                              constraints: BoxConstraints(
-                                minWidth: 70,
-                                minHeight: 70,
-                                maxWidth: 150,
-                                maxHeight: 150,
-                              ),
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Row(
+                          children: [
+                            Padding(
+                              padding: const EdgeInsets.all(8.0),
                               child: GestureDetector(
                                 onTap: () {
                                   // Navigator.push(
@@ -397,11 +370,10 @@ class _HomeScreenState extends State<HomeScreen> {
                                 },
                                 child: Card(
                                   elevation: 15,
-                                  color: Colors.purple,
-                                  shadowColor: Colors.purple[700],
+                                  color: c3,
                                   child: Container(
-                                    width: 120,
-                                    height: 140,
+                                    width: 130,
+                                    height: 130,
                                     child: Padding(
                                       padding: const EdgeInsets.all(8.0),
                                       child: Column(
@@ -430,19 +402,11 @@ class _HomeScreenState extends State<HomeScreen> {
                                 ),
                               ),
                             ),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: ConstrainedBox(
-                              constraints: BoxConstraints(
-                                minWidth: 70,
-                                minHeight: 70,
-                                maxWidth: 150,
-                                maxHeight: 150,
-                              ),
+                            Padding(
+                              padding: const EdgeInsets.all(8.0),
                               child: Card(
                                 elevation: 15,
-                                color: Colors.blue[900],
+                                color: c3,
                                 shadowColor: Colors.blueGrey,
                                 child: GestureDetector(
                                   onTap: () {
@@ -452,8 +416,8 @@ class _HomeScreenState extends State<HomeScreen> {
                                     //         builder: (context) => PayRoll()));
                                   },
                                   child: Container(
-                                    width: 120,
-                                    height: 140,
+                                    width: 130,
+                                    height: 130,
                                     child: Padding(
                                       padding: const EdgeInsets.all(8.0),
                                       child: Column(
@@ -481,24 +445,16 @@ class _HomeScreenState extends State<HomeScreen> {
                                   ),
                                 ),
                               ),
-                            ),
-                          )
-                        ],
+                            )
+                          ],
+                        ),
                       ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Row(
-                        children: [
-                          Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: ConstrainedBox(
-                              constraints: BoxConstraints(
-                                minWidth: 70,
-                                minHeight: 70,
-                                maxWidth: 150,
-                                maxHeight: 150,
-                              ),
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Row(
+                          children: [
+                            Padding(
+                              padding: const EdgeInsets.all(8.0),
                               child: GestureDetector(
                                 onTap: () {
                                   // Navigator.push(
@@ -508,11 +464,10 @@ class _HomeScreenState extends State<HomeScreen> {
                                 },
                                 child: Card(
                                   elevation: 15,
-                                  color: Colors.blueGrey[900],
-                                  shadowColor: Colors.grey[700],
+                                  color: c3,
                                   child: Container(
-                                    width: 120,
-                                    height: 140,
+                                    width: 130,
+                                    height: 130,
                                     child: Padding(
                                       padding: const EdgeInsets.all(8.0),
                                       child: Column(
@@ -541,20 +496,11 @@ class _HomeScreenState extends State<HomeScreen> {
                                 ),
                               ),
                             ),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: ConstrainedBox(
-                              constraints: BoxConstraints(
-                                minWidth: 70,
-                                minHeight: 70,
-                                maxWidth: 150,
-                                maxHeight: 150,
-                              ),
+                            Padding(
+                              padding: const EdgeInsets.all(8.0),
                               child: Card(
                                 elevation: 15,
-                                color: Colors.green[900],
-                                shadowColor: Colors.blueGrey,
+                                color: c3,
                                 child: GestureDetector(
                                   onTap: () {
                                     // Navigator.push(
@@ -563,8 +509,8 @@ class _HomeScreenState extends State<HomeScreen> {
                                     //         builder: (context) => PayRoll()));
                                   },
                                   child: Container(
-                                    width: 120,
-                                    height: 140,
+                                    width: 130,
+                                    height: 130,
                                     child: Padding(
                                       padding: const EdgeInsets.all(8.0),
                                       child: Column(
@@ -592,15 +538,15 @@ class _HomeScreenState extends State<HomeScreen> {
                                   ),
                                 ),
                               ),
-                            ),
-                          )
-                        ],
-                      ),
-                    )
-                  ],
+                            )
+                          ],
+                        ),
+                      )
+                    ],
+                  ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
 

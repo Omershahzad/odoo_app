@@ -26,7 +26,7 @@ class _AddEmployeeState extends State<AddEmployee> {
     bool screen = orien == Orientation.portrait ? true : false;
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: cg,
+        backgroundColor: c3,
         leading: GestureDetector(
             onTap: () {
               Navigator.pop(context);
@@ -52,12 +52,12 @@ class _AddEmployeeState extends State<AddEmployee> {
                             decoration: InputDecoration(
                               border: OutlineInputBorder(
                                   gapPadding: 2,
-                                  borderSide: BorderSide(color: cg)),
+                                  borderSide: BorderSide(color: c3)),
                               labelText: "First Name",
-                              labelStyle: TextStyle(fontSize: 12, color: cg),
+                              labelStyle: TextStyle(fontSize: 12, color: c3),
                               prefixIcon: Icon(
                                 Icons.person,
-                                color: cg,
+                                color: c3,
                               ),
                             ),
                           ),
@@ -67,12 +67,12 @@ class _AddEmployeeState extends State<AddEmployee> {
                           TextField(
                             decoration: InputDecoration(
                               border: OutlineInputBorder(
-                                  borderSide: BorderSide(color: cg)),
+                                  borderSide: BorderSide(color: c3)),
                               labelText: "Last Name",
-                              labelStyle: TextStyle(fontSize: 12, color: cg),
+                              labelStyle: TextStyle(fontSize: 12, color: c3),
                               prefixIcon: Icon(
                                 Icons.person,
-                                color: cg,
+                                color: c3,
                               ),
                             ),
                           ),
@@ -82,12 +82,12 @@ class _AddEmployeeState extends State<AddEmployee> {
                           TextField(
                             decoration: InputDecoration(
                               border: OutlineInputBorder(
-                                  borderSide: BorderSide(color: cg)),
+                                  borderSide: BorderSide(color: c3)),
                               labelText: "Mobile Number*",
-                              labelStyle: TextStyle(fontSize: 12, color: cg),
+                              labelStyle: TextStyle(fontSize: 12, color: c3),
                               prefixIcon: Icon(
                                 Icons.phone,
-                                color: cg,
+                                color: c3,
                               ),
                             ),
                           ),
@@ -97,12 +97,12 @@ class _AddEmployeeState extends State<AddEmployee> {
                           TextField(
                             decoration: InputDecoration(
                               border: OutlineInputBorder(
-                                  borderSide: BorderSide(color: cg)),
+                                  borderSide: BorderSide(color: c3)),
                               labelText: "Email*",
-                              labelStyle: TextStyle(fontSize: 12, color: cg),
+                              labelStyle: TextStyle(fontSize: 12, color: c3),
                               prefixIcon: Icon(
                                 Icons.email,
-                                color: cg,
+                                color: c3,
                               ),
                             ),
                           ),
@@ -112,12 +112,12 @@ class _AddEmployeeState extends State<AddEmployee> {
                           TextField(
                             decoration: InputDecoration(
                               border: OutlineInputBorder(
-                                  borderSide: BorderSide(color: cg)),
+                                  borderSide: BorderSide(color: c3)),
                               labelText: "Designation*",
-                              labelStyle: TextStyle(fontSize: 12, color: cg),
+                              labelStyle: TextStyle(fontSize: 12, color: c3),
                               prefixIcon: Icon(
                                 Icons.workspaces_filled,
-                                color: cg,
+                                color: c3,
                               ),
                             ),
                           ),
@@ -127,12 +127,12 @@ class _AddEmployeeState extends State<AddEmployee> {
                           TextField(
                             decoration: InputDecoration(
                               border: OutlineInputBorder(
-                                  borderSide: BorderSide(color: cg)),
+                                  borderSide: BorderSide(color: c3)),
                               labelText: "Password*",
-                              labelStyle: TextStyle(fontSize: 12, color: cg),
+                              labelStyle: TextStyle(fontSize: 12, color: c3),
                               prefixIcon: Icon(
                                 Icons.lock,
-                                color: cg,
+                                color: c3,
                               ),
                             ),
                           ),
@@ -268,8 +268,8 @@ class _AddEmployeeState extends State<AddEmployee> {
               height: screen ? width * 0.14 : height * 0.1,
               txt: "Add",
               txtColor: Colors.white,
-              buttonColor: cg,
-              borderColor: cg,
+              buttonColor: c3,
+              borderColor: c3,
               onPressed: () {}),
         ),
       ),

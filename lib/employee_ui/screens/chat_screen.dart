@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:odoo_client/employee_ui/screens/chat_detail.dart';
 import 'package:odoo_client/utilis/colors.dart';
 import 'package:odoo_client/utilis/images.dart';
+
+import 'contact_screen.dart';
+import 'group_screen.dart';
 
 class ChatUI extends StatefulWidget {
   ChatUI({Key key}) : super(key: key);
@@ -41,64 +45,74 @@ class _ChatUIState extends State<ChatUI> {
                     scrollDirection: Axis.horizontal,
                     child: Row(
                       children: [
-                        Card(
-                          elevation: 4,
-                          child: Container(
-                            height: 90,
-                            width: 95,
-                            margin: EdgeInsets.only(left: 10),
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Container(
-                                    decoration: BoxDecoration(
+                        GestureDetector(
+                          onTap: (){
+                            Navigator.push(context, MaterialPageRoute(builder: (context)=> ContactScreen()));
+                          },
+                          child: Card(
+                            elevation: 4,
+                            child: Container(
+                              height: 90,
+                              width: 95,
+                              margin: EdgeInsets.only(left: 10),
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Container(
+                                      decoration: BoxDecoration(
+                                          color: cg,
+                                          borderRadius: BorderRadius.circular(5)),
+                                      child: Icon(
+                                        Icons.add,
+                                        color: Colors.white,
+                                      )),
+                                  SizedBox(
+                                    height: 8,
+                                  ),
+                                  Text("New Chat",
+                                      style: TextStyle(
                                         color: cg,
-                                        borderRadius: BorderRadius.circular(5)),
-                                    child: Icon(
-                                      Icons.add,
-                                      color: Colors.white,
-                                    )),
-                                SizedBox(
-                                  height: 8,
-                                ),
-                                Text("New Chat",
-                                    style: TextStyle(
-                                      color: cg,
-                                    ))
-                              ],
+                                      ))
+                                ],
+                              ),
                             ),
                           ),
                         ),
                         SizedBox(
                           width: width * 0.01,
                         ),
-                        Card(
-                          elevation: 4,
-                          child: Container(
-                            height: 90,
-                            width: 95,
-                            margin: EdgeInsets.only(left: 10),
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Container(
-                                    decoration: BoxDecoration(
+                        GestureDetector(
+                          onTap: (){
+                            Navigator.push(context, MaterialPageRoute(builder: (context)=> GroupScreen()));
+                          },
+                          child: Card(
+                            elevation: 4,
+                            child: Container(
+                              height: 90,
+                              width: 95,
+                              margin: EdgeInsets.only(left: 10),
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Container(
+                                      decoration: BoxDecoration(
+                                          color: cg,
+                                          borderRadius: BorderRadius.circular(5)),
+                                      child: Icon(
+                                        Icons.group,
+                                        color: Colors.white,
+                                      )),
+                                  SizedBox(
+                                    height: 8,
+                                  ),
+                                  Text("Groups",
+                                      style: TextStyle(
                                         color: cg,
-                                        borderRadius: BorderRadius.circular(5)),
-                                    child: Icon(
-                                      Icons.group,
-                                      color: Colors.white,
-                                    )),
-                                SizedBox(
-                                  height: 8,
-                                ),
-                                Text("Groups",
-                                    style: TextStyle(
-                                      color: cg,
-                                    ))
-                              ],
+                                      ))
+                                ],
+                              ),
                             ),
                           ),
                         ),
@@ -156,58 +170,63 @@ class _ChatUIState extends State<ChatUI> {
                   Padding(
                     padding: const EdgeInsets.symmetric(
                         horizontal: 10, vertical: 10),
-                    child: Row(children: [
-                      CircleAvatar(
-                        backgroundImage: AssetImage(pic),
-                        maxRadius: 25,
-                      ),
-                      SizedBox(
-                        width: 15,
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.symmetric(vertical: 10),
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text("User 1",
-                                style: TextStyle(
-                                    fontSize: 16, fontWeight: FontWeight.bold)),
-                            SizedBox(
-                              height: 6,
-                            ),
-                            Text(
-                              "Hi! How are you?",
-                              style: TextStyle(color: Colors.black),
-                            )
-                          ],
+                    child: GestureDetector(
+                      onTap: (){
+                        Navigator.push(context, MaterialPageRoute(builder: (context)=>MyChatScreen()));
+                      },
+                      child: Row(children: [
+                        CircleAvatar(
+                          backgroundImage: AssetImage(pic),
+                          maxRadius: 25,
                         ),
-                      ),
-                      Spacer(),
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.end,
-                        children: [
-                          Text(
-                            "12:44 AM",
-                            style: TextStyle(color: Colors.black),
+                        SizedBox(
+                          width: 15,
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.symmetric(vertical: 10),
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text("User 1",
+                                  style: TextStyle(
+                                      fontSize: 16, fontWeight: FontWeight.bold)),
+                              SizedBox(
+                                height: 6,
+                              ),
+                              Text(
+                                "Hi! How are you?",
+                                style: TextStyle(color: Colors.black),
+                              )
+                            ],
                           ),
-                          Container(
-                            decoration: BoxDecoration(
-                              color: cg,
-                              shape: BoxShape.circle,
+                        ),
+                        Spacer(),
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.end,
+                          children: [
+                            Text(
+                              "12:44 AM",
+                              style: TextStyle(color: Colors.black),
                             ),
-                            child: Padding(
-                              padding: const EdgeInsets.all(6.0),
-                              child: Text(
-                                "2",
-                                style: TextStyle(
-                                    color: Colors.white, fontSize: 10),
+                            Container(
+                              decoration: BoxDecoration(
+                                color: cg,
+                                shape: BoxShape.circle,
+                              ),
+                              child: Padding(
+                                padding: const EdgeInsets.all(6.0),
+                                child: Text(
+                                  "2",
+                                  style: TextStyle(
+                                      color: Colors.white, fontSize: 10),
+                                ),
                               ),
                             ),
-                          ),
-                        ],
-                      )
-                    ]),
+                          ],
+                        )
+                      ]),
+                    ),
                   ),
                   Divider(
                     height: 1,

@@ -11,7 +11,7 @@
          FlutterApplication and put your custom class here. -->
     <application
         android:name="io.flutter.app.FlutterApplication"
-        android:label="DynexcelApp"
+        android:label="Dynexcel"
         android:icon="@mipmap/ic_launcher">
           <meta-data android:name="com.google.android.geo.API_KEY"
                android:value="AIzaSyDsVNExPJtzcldof8Fep8JocpKLN0lo-UE"/>

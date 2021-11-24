@@ -113,7 +113,7 @@ class _ProfilePageState extends Base<ProfilePage> {
           children: [
             Container(
               height: 170,
-              color: Color(0xff875a7b),
+              color: c5,
             ),
             Padding(
               padding: const EdgeInsets.only(top: 35.0),
@@ -183,10 +183,7 @@ class _ProfilePageState extends Base<ProfilePage> {
                           ),
                           child: CircleAvatar(
                             backgroundImage: NetworkImage(
-                              image_URL != null
-                                  ? image_URL
-                                  : "https://teleme.io/assets/feature_updates/tg_group_admins.jpg",
-                            ),
+                                "https://st4.depositphotos.com/4329009/19956/v/600/depositphotos_199564354-stock-illustration-creative-vector-illustration-default-avatar.jpg"),
                           ),
                         ),
                       ),
@@ -215,7 +212,7 @@ class _ProfilePageState extends Base<ProfilePage> {
                     //   ),
                     // ),
                     Padding(
-                      padding: EdgeInsets.all(5.0),
+                      padding: EdgeInsets.all(0.0),
                       child: Text(
                         name,
                         style: TextStyle(

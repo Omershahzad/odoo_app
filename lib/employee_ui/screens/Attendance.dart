@@ -90,7 +90,7 @@ class _GeolocatorWidgetState extends State<GeolocatorWidget> {
         height: screen ? width * 0.14 : height * 0.1,
         txt: "Check in",
         txtColor: Colors.white,
-        buttonColor: cb,
+        buttonColor: c5,
         borderColor: Colors.transparent,
         onPressed: () {
           getdistance();
@@ -235,7 +235,7 @@ class _GeolocatorWidgetState extends State<GeolocatorWidget> {
 
     return Scaffold(
         appBar: AppBar(
-            backgroundColor: cb,
+            backgroundColor: c5,
             leading: GestureDetector(
                 onTap: () {
                   Navigator.pop(context);
