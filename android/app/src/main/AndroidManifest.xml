@@ -14,7 +14,7 @@
         android:label="Dynexcel"
         android:icon="@mipmap/ic_launcher">
           <meta-data android:name="com.google.android.geo.API_KEY"
-               android:value="AIzaSyDsVNExPJtzcldof8Fep8JocpKLN0lo-UE"/>
+               android:value="your_key"/>
         <activity
             android:name=".MainActivity"
             android:launchMode="singleTop"
